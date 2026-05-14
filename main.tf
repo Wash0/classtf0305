@@ -1,13 +1,12 @@
-resource "aws_s3_bucket" "mybucket" {
-  bucket = var.bucket_name
-
-  tags = {
-    Name        = "My bucket"
-    Environment = "Dev"
-  }
+module "ec2"{
+  source = "./modules/ec2"
 }
 
-resource "aws_iam_user" "lb" {
-  name = var.name
-
+module "s3"{
+  source = "./modules/s3"
+  
+} 
+module "vpc" {
+  source = "./modules/vpc"
+  
 }
